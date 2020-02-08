@@ -1,29 +1,35 @@
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/Operators';
+import { MovieModel } from '../models/movie.model';
 
 @Injectable()
 export class MovieService {
 
   private baseUrl = environment.movieBaseUrl;
   private apiKey = environment.omdbApiKey;
-  queryURL: string;
 
   constructor(private http: HttpClient) {}
 
-  createQueryString(title?: string, year?: string, plot?: string): void {
+  searchMovie(term: string): Observable<MovieModel[]> {
 
-    const titleParametr = title ? `&s=${title}` : '';
-    const plotParametr = plot ? `&plot=${plot}` : '';
-    const yearParametr = year ? `&y=${year}` : '';
-
-    this.queryURL = `${this.baseUrl}?apikey=${this.apiKey}${titleParametr}${plotParametr}${yearParametr}`;
-    console.log(this.queryURL);
+    let queryURL = `${this.baseUrl}?apikey=${this.apiKey}&s=${term}`;
+    console.log(queryURL);
+    return this.http.get(queryURL)
+          .pipe(map(res => {
+            return res.Search.map(item => {
+              return new MovieModel(
+                item.Title,
+                item.Year,
+                item.imdbID,
+                item.Type,
+                item.Poster
+              );
+            });
+          }));
   }
 
-  getData() {
-    console.log(this.queryURL);
-    return this.http.get(this.queryURL);
-  }
 }
 
