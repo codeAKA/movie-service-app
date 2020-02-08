@@ -1,0 +1,32 @@
+<div class="example-button-row">
+  <form [formGroup]="searchForm" class="example-form" >
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Title" formControlName="titleField" #title>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Year" formControlName="yearField" #year>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Plot" formControlName="plotField" #plot>
+              <mat-option value="short">Short</mat-option>
+              <mat-option value="full">Full</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td>
+          <button mat-raised-button color="primary" (click)="submitSearch()">Search</button>
+        </td>
+        <td>
+          <button mat-raised-button color="basic" (click)="resetForm()">Reset</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
