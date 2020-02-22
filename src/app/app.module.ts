@@ -8,8 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MovieService } from './services/movies.service';
-import { MoviesListComponent } from './components/movies-list.component/movies-list/movies-list.component';
-import { MovieItemComponent } from './components/movie-item.component/movie-item/movie-item.component';
 
 import {
   MatInputModule,
@@ -23,6 +21,9 @@ import {
   RouterModule,
   Routes
 } from '@angular/router';
+import { MoviesListComponent } from './components/movies-list.component/movies-list.component';
+import { MovieItemComponent } from './components/movie-item.component/movie-item.component';
+import { ScrollableDirective } from './directives/scrollable.directive';
 
 const routes: Routes = [
   {path: '', redirectTo: 'search', pathMatch: 'full'},
@@ -34,7 +35,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     MoviesListComponent,
-    MovieItemComponent
+    MovieItemComponent,
+    ScrollableDirective
   ],
   imports: [
     BrowserModule,

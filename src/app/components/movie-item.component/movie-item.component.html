@@ -1,0 +1,12 @@
+<mat-card class="movie-item-card">
+  <mat-card-header>
+    <mat-card-title>{{item.title}}</mat-card-title>
+  </mat-card-header>
+  <!-- <ng-container *ngIf="item.poster !== 'N/A'; then posterImg; else mockPoster"></ng-container> -->
+
+    <img mat-card-image [src]="item.poster">
+
+  <!-- <ng-template #mockPoster>
+    <img mat-card-image src="../../../../images/img-placeholder.png">
+  </ng-template> -->
+</mat-card>

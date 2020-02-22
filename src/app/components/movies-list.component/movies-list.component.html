@@ -4,8 +4,11 @@
       <tr>
         <td>
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Title" formControlName="titleField" #title>
+            <input type="search" matInput placeholder="Title" formControlName="titleField" #title>
           </mat-form-field>
+        </td>
+        <td>
+          <button mat-raised-button color="primary" (click)="submitSearch(title.value)">Search</button>
         </td>
         <td>
           <mat-form-field class="example-full-width">
@@ -21,12 +24,15 @@
           </mat-form-field>
         </td>
         <td>
-          <button mat-raised-button color="primary" (click)="submitSearch()">Search</button>
-        </td>
-        <td>
           <button mat-raised-button color="basic" (click)="resetForm()">Reset</button>
         </td>
       </tr>
     </table>
   </form>
+  <div layout="column">
+    <app-movie-item
+      *ngFor="let movieItem of results | async"
+      [item]="movieItem"
+    ></app-movie-item>
+  </div>
 </div>
