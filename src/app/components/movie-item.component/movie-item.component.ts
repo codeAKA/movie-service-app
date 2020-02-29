@@ -11,11 +11,11 @@ export class MovieItemComponent implements OnInit {
 
   @Input() item: MovieModel;
   id: string;
-  imgPlaceholderUrl = './app/images/img-placeholder.png';
+  imgPlaceholderUrl = '../../../assets/images/img-placeholder.png';
 
   constructor(private route: ActivatedRoute) {
     route.params.subscribe(params => { this.id = params.id; });
-   }
+  }
 
   ngOnInit() {
     this.item.poster = this.item.poster !== 'N/A' ? this.item.poster : this.imgPlaceholderUrl;

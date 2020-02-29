@@ -23,12 +23,12 @@ import {
 } from '@angular/router';
 import { MoviesListComponent } from './components/movies-list.component/movies-list.component';
 import { MovieItemComponent } from './components/movie-item.component/movie-item.component';
-import { ScrollableDirective } from './directives/scrollable.directive';
+import { SrollableDirective } from './directives/srollable.directive';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'search', pathMatch: 'full'},
-  {path: 'search', component: MoviesListComponent},
-  {path: 'movie/:id', component: MoviesListComponent},
+  { path: '', redirectTo: 'search', pathMatch: 'full' },
+  { path: 'search', component: MoviesListComponent },
+  { path: 'movie/:id', component: MoviesListComponent },
 ];
 
 @NgModule({
@@ -36,7 +36,7 @@ const routes: Routes = [
     AppComponent,
     MoviesListComponent,
     MovieItemComponent,
-    ScrollableDirective
+    SrollableDirective
   ],
   imports: [
     BrowserModule,

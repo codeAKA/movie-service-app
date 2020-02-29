@@ -14,7 +14,7 @@ export class MoviesListComponent implements OnInit {
 
   private loading = false;
   public searchForm: FormGroup;
-  results: Observable<MovieModel[]>;
+  results$: Observable<MovieModel[]>;
 
   constructor(fb: FormBuilder, private moveieService: MovieService) {
     this.searchForm = fb.group({
@@ -22,7 +22,7 @@ export class MoviesListComponent implements OnInit {
       yearField: [''],
       plotField: ['']
     });
-   }
+  }
 
   ngOnInit() {
     // this.searchForm.controls.titleField.valueChanges.pipe(
@@ -33,14 +33,15 @@ export class MoviesListComponent implements OnInit {
     // ).subscribe(data => console.log(data));
   }
 
+  scrollHandler(e) {
+    console.log(e);
+  }
+
   submitSearch(term: string) {
-    // this.moveieService.searchMovie(term).subscribe(data => {
-    //   console.log(data);
-    // });
     this.loading = true;
-    this.results = this.moveieService.searchMovie(term);
+    this.results$ = this.moveieService.searchMovie(term);
     this.moveieService.searchMovie(term).subscribe(data => console.log(data));
-    console.log(this.results);
+    console.log(this.results$);
   }
 
   resetForm() {

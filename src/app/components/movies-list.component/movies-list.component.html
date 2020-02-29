@@ -1,4 +1,4 @@
-<div class="example-button-row">
+<div class="example-button-row" appSrollable (scrollPosition)="scrollHandler($event)" >
   <form [formGroup]="searchForm" class="example-form" >
     <table class="example-full-width" cellspacing="0">
       <tr>
@@ -31,7 +31,7 @@
   </form>
   <div layout="column">
     <app-movie-item
-      *ngFor="let movieItem of results | async"
+      *ngFor="let movieItem of results$ | async"
       [item]="movieItem"
     ></app-movie-item>
   </div>
